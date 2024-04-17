@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Socket } from "socket.io-client";
+import { useContext } from "react";
+// import { Socket } from "socket.io-client";
 import ioSocketContext from "../utils/contextUtils";
 
 function Form() {
@@ -8,6 +8,7 @@ function Form() {
     e.preventDefault();
     const form = document.getElementById("form");
     const input = document.getElementById("input");
+    console.log(input.value);
 
     if (input.value) {
       socket.emit("chat message", input.value);
@@ -21,27 +22,19 @@ function Form() {
           flex: "1",
           // display: "flex",
           // width: "100%",
-          // border: "2px solid steelblue",
+          border: "2px solid steelblue",
         }}
         id="form"
         onSubmit={handleSubmit}
       >
-        {/* <div
-          style={{
-            // border: "5px solid white",
-            height: "100%",
-            width: "100%",
-            display: "flex",
-          }}
-          id="display-area"
-        > */}
         <div
           style={{
             display: "flex",
             // alignItems: "center",
             // border: "2px solid purple",
-            height: "35%",
+            height: "100%",
             width: "100%",
+            alignItems: "end",
             // justifySelf: "center",
           }}
         >
@@ -49,11 +42,10 @@ function Form() {
             id="input"
             type="text"
             placeholder="Enter your text overhere"
-            style={{ flex: "1" }}
-          ></input>
+            style={{ flex: "1", height: "45px" }}
+          />
           <button type="submit">Send</button>
         </div>
-        {/* </div> */}
       </form>
     </>
   );
